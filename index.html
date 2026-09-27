@@ -1,0 +1,620 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Prasanna Jain · Software & AI Engineer</title>
+<meta name="description" content="Prasanna Jain, founding engineer building AI agents, data pipelines and backend systems that run in production and can be trusted with real data." />
+<meta property="og:title" content="Prasanna Jain · Software & AI Engineer" />
+<meta property="og:description" content="Founding engineer building AI agents and data systems that run in production." />
+<meta name="theme-color" content="#f5f4f0" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%231c1b19'/><text x='50%' y='57%' text-anchor='middle' font-family='monospace' font-size='28' font-weight='700' fill='%23f5f4f0'>pj</text></svg>" />
+<style>
+:root{
+  --bg:#f5f4f0; --bg2:#eeece6; --card:#ffffff; --card2:#fbfaf7;
+  --line:#e3e0d8; --line2:#d3cfc4;
+  --text:#1c1b19; --muted:#6b6862; --dim:#9a968d;
+  --accent:#3f5e50; --accent-soft:#e6ede8;
+  --good:#3f6e52; --good-soft:#e5efe8; --bad:#a0473f; --bad-soft:#f5e7e4; --warn:#8a6a2c; --warn-soft:#f4ecdc;
+  --shadow:0 1px 2px rgba(28,27,25,.04),0 8px 28px -12px rgba(28,27,25,.14);
+  --shadow-lg:0 2px 4px rgba(28,27,25,.04),0 28px 60px -24px rgba(28,27,25,.24);
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --sans:"Inter",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --r:18px; --maxw:1120px;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#131311; --bg2:#1a1a17; --card:#1b1b18; --card2:#20201c;
+    --line:#2c2b27; --line2:#3a3934;
+    --text:#ecebe6; --muted:#a7a49b; --dim:#77746c;
+    --accent:#9cc3ad; --accent-soft:#223029;
+    --good:#8fc4a3; --good-soft:#1f2d25; --bad:#e3998f; --bad-soft:#322220; --warn:#d9b574; --warn-soft:#2e281b;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 28px -12px rgba(0,0,0,.5);
+    --shadow-lg:0 2px 4px rgba(0,0,0,.3),0 28px 60px -24px rgba(0,0,0,.7);
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+::selection{background:var(--accent-soft)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+.backdrop{position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background-image:radial-gradient(var(--line2) 1px,transparent 1px);background-size:22px 22px;
+  mask-image:radial-gradient(ellipse 70% 50% at 50% 0%,#000 30%,transparent 100%);opacity:.7}
+
+.nav{position:sticky;top:0;z-index:50;backdrop-filter:saturate(150%) blur(12px);background:color-mix(in srgb,var(--bg) 78%,transparent);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-weight:700;letter-spacing:-.02em;display:flex;align-items:center;gap:10px;font-size:15px}
+.logo .mark{width:28px;height:28px;border-radius:8px;background:var(--text);color:var(--bg);display:grid;place-items:center;font-family:var(--mono);font-size:12px;font-weight:700}
+.nav ul{display:flex;gap:4px;list-style:none;margin:0;padding:0}
+.nav ul a{font-size:14px;color:var(--muted);padding:8px 12px;border-radius:10px;transition:.2s}
+.nav ul a:hover{color:var(--text);background:var(--bg2)}
+.btn{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;padding:11px 18px;border-radius:12px;border:1px solid var(--line2);background:var(--card);box-shadow:var(--shadow);transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-1px);box-shadow:var(--shadow-lg)}
+.btn-dark{background:var(--text);color:var(--bg);border-color:transparent}
+.btn .arrow{transition:transform .2s}
+.btn:hover .arrow{transform:translateX(3px)}
+
+.hero{padding:88px 0 64px}
+.hero .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:56px;align-items:center}
+.pill{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:12.5px;color:var(--muted);border:1px solid var(--line2);background:var(--card);padding:7px 14px;border-radius:999px;box-shadow:var(--shadow)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--good);animation:pulse 2.2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--good) 50%,transparent)}70%{box-shadow:0 0 0 9px transparent}100%{box-shadow:0 0 0 0 transparent}}
+h1{font-size:clamp(40px,5.8vw,66px);line-height:1.03;letter-spacing:-.045em;margin:22px 0 18px;font-weight:800}
+h1 em{font-style:normal;color:var(--accent)}
+.lede{font-size:18px;color:var(--muted);max-width:560px;margin:0 0 30px}
+.lede strong{color:var(--text);font-weight:600}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+
+.portrait{position:relative}
+.portrait .frame{border-radius:28px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow-lg);aspect-ratio:4/5;background:var(--bg2)}
+.portrait img{width:100%;height:100%;object-fit:cover;object-position:top}
+.float{position:absolute;background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-lg);padding:12px 14px;display:flex;align-items:center;gap:10px;animation:bob 6s ease-in-out infinite}
+.float b{display:block;font-size:17px;letter-spacing:-.02em;line-height:1.2}
+.float span.s{color:var(--muted);font-size:12px}
+.float .ic{width:32px;height:32px;border-radius:9px;display:grid;place-items:center;font-family:var(--mono);font-weight:700;font-size:13px;background:var(--accent-soft);color:var(--accent)}
+.f1{left:-34px;top:14%}
+.f2{right:-28px;bottom:16%;animation-delay:-3s}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+/* terminal */
+.termrow{margin-bottom:22px}
+.term{background:#1c1b19;border:1px solid #2c2b27;border-radius:var(--r);box-shadow:var(--shadow-lg);overflow:hidden}
+.term-bar{display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid #2c2b27;font-family:var(--mono);font-size:12px;color:#8d8a82}
+.term-bar i{width:11px;height:11px;border-radius:50%;display:inline-block}
+.term-bar i:nth-child(1){background:#e0685f}.term-bar i:nth-child(2){background:#dcb14f}.term-bar i:nth-child(3){background:#6dab76}
+.term-bar span{margin-left:auto}
+.term-body{padding:20px 22px 24px;font-family:var(--mono);font-size:13.5px;line-height:1.8;color:#d9d6ce;min-height:292px}
+.term-body .p{color:#9cc3ad}
+.term-body .k{color:#a9bfe0}
+.term-body .v{color:#d9b574}
+.term-body .ok{color:#9cc3ad}
+.caret{display:inline-block;width:8px;height:16px;background:#9cc3ad;vertical-align:-3px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:var(--r);background:var(--card);box-shadow:var(--shadow);overflow:hidden}
+.stat{padding:26px 24px;border-right:1px solid var(--line)}
+.stat:last-child{border-right:0}
+.stat .n{font-size:34px;font-weight:800;letter-spacing:-.04em}
+.stat .l{font-size:13px;color:var(--muted);margin-top:2px}
+
+section{padding:96px 0}
+.eyebrow{font-family:var(--mono);font-size:12.5px;color:var(--accent);letter-spacing:.06em;text-transform:uppercase}
+h2{font-size:clamp(30px,4vw,44px);letter-spacing:-.035em;line-height:1.08;margin:12px 0 14px;font-weight:800}
+.sub{color:var(--muted);max-width:660px;margin:0 0 44px;font-size:17px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow)}
+
+.arch{padding:28px;overflow-x:auto}
+.arch svg{width:100%;min-width:760px;height:auto;display:block}
+.arch .caption{display:flex;flex-wrap:wrap;gap:18px;margin-top:14px;font-size:13px;color:var(--muted)}
+.arch .caption i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+
+.feature{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
+.feature .card{padding:30px}
+.feature h3{font-size:21px;letter-spacing:-.025em;margin:0 0 10px}
+.feature p{color:var(--muted);margin:0 0 14px}
+.checks{list-style:none;padding:0;margin:14px 0 0;display:grid;gap:10px}
+.checks li{display:flex;gap:12px;align-items:flex-start;font-size:15px}
+.checks li::before{content:"";flex:none;width:18px;height:18px;margin-top:3px;border-radius:6px;background:var(--good-soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 8.5l2.5 2.5L12 5.5' fill='none' stroke='%233f6e52' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/13px no-repeat;border:1px solid color-mix(in srgb,var(--good) 30%,transparent)}
+.runlog{font-family:var(--mono);font-size:13px;line-height:1.85;background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:18px 20px;color:var(--muted)}
+.runlog .t{color:var(--dim)} .runlog .ok{color:var(--good);font-weight:600} .runlog .no{color:var(--bad);font-weight:600} .runlog .hi{color:var(--text)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-family:var(--mono);font-size:12px;color:var(--muted);border:1px solid var(--line);background:var(--card2);padding:5px 10px;border-radius:8px}
+
+.tl{position:relative;display:grid;gap:18px;padding-left:34px}
+.tl::before{content:"";position:absolute;left:9px;top:10px;bottom:10px;width:2px;background:linear-gradient(var(--line2),var(--line) 80%,transparent)}
+.role{position:relative;padding:28px}
+.role::before{content:"";position:absolute;left:-31px;top:34px;width:14px;height:14px;border-radius:50%;background:var(--card);border:2px solid var(--line2)}
+.role.current::before{border-color:var(--good);background:var(--good-soft)}
+.role .top{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap}
+.role h3{margin:0;font-size:19px;letter-spacing:-.02em}
+.role h3 span{color:var(--muted);font-weight:500}
+.role .when{font-family:var(--mono);font-size:12.5px;color:var(--dim);white-space:nowrap}
+.role .when.now{color:var(--good)}
+.role .ctx{font-size:14px;color:var(--dim);margin:4px 0 0}
+.role ul{margin:14px 0 16px;padding-left:18px;color:var(--muted)}
+.role li{margin:7px 0}
+.role li strong{color:var(--text);font-weight:600}
+
+.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:18px}
+.proj{grid-column:span 2;display:flex;flex-direction:column;overflow:hidden;transition:transform .3s,box-shadow .3s}
+.proj:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.proj.wide{grid-column:span 3}
+.shot{aspect-ratio:16/10;overflow:hidden;border-bottom:1px solid var(--line);background:var(--bg2);position:relative}
+.shot img{width:100%;height:100%;object-fit:cover;object-position:top left;transition:transform .7s}
+.proj:hover .shot img{transform:scale(1.035)}
+.browser{position:absolute;top:0;left:0;right:0;height:26px;background:var(--card);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:6px;padding:0 10px;z-index:1}
+.browser i{width:8px;height:8px;border-radius:50%;background:var(--line2)}
+.browser span{margin-left:8px;font-family:var(--mono);font-size:10.5px;color:var(--dim)}
+.shot.framed img{margin-top:26px;height:calc(100% - 26px)}
+.codeprev{aspect-ratio:16/10;border-bottom:1px solid var(--line);background:var(--card2);padding:20px 22px;font-family:var(--mono);font-size:12.5px;line-height:1.8;color:var(--muted);overflow:hidden}
+.codeprev .k{color:var(--accent)} .codeprev .g{color:var(--good)} .codeprev .r{color:var(--bad)} .codeprev .w{color:var(--warn)}
+.proj .body{padding:20px 22px 22px;display:flex;flex-direction:column;gap:10px;flex:1}
+.proj h3{margin:0;font-size:18px;letter-spacing:-.02em;display:flex;align-items:center;gap:10px}
+.proj p{margin:0;color:var(--muted);font-size:14.5px}
+.proj .links{display:flex;gap:16px;margin-top:auto;padding-top:6px;font-family:var(--mono);font-size:13px}
+.proj .links a{color:var(--accent);font-weight:500}
+.proj .links a:hover{text-decoration:underline}
+.badge{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--good);background:var(--good-soft);padding:2px 8px;border-radius:6px}
+
+.princ{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.pcard{padding:24px}
+.pcard .num{font-family:var(--mono);font-size:12px;color:var(--dim)}
+.pcard svg{width:34px;height:34px;margin:10px 0 4px;color:var(--accent)}
+.pcard h3{margin:6px 0 8px;font-size:17px;letter-spacing:-.02em}
+.pcard p{margin:0;color:var(--muted);font-size:14.5px}
+
+.stackgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.stackgrid .card{padding:22px}
+.stackgrid h3{margin:0 0 12px;font-size:13px;font-family:var(--mono);color:var(--muted);font-weight:500;text-transform:uppercase;letter-spacing:.05em}
+
+.edu{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.ecard{padding:24px}
+.ecard .when{font-family:var(--mono);font-size:12.5px;color:var(--dim)}
+.ecard h3{margin:8px 0 6px;font-size:17px;letter-spacing:-.02em}
+.ecard p{margin:0;color:var(--muted);font-size:14.5px}
+
+.contact{padding:64px 40px;text-align:center;background:linear-gradient(180deg,var(--card),var(--card2))}
+.contact h2{margin-top:6px}
+.contact .sub{margin:0 auto 30px}
+.contact .cta{justify-content:center}
+footer{padding:36px 0 48px;color:var(--dim);font-family:var(--mono);font-size:12.5px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.flowline{stroke-dasharray:5 6;animation:dash 1.6s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-22}}
+
+@media (max-width:960px){
+  .hero .wrap,.feature{grid-template-columns:1fr}
+  .portrait{max-width:380px}
+  .f1{left:-10px}.f2{right:-10px}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .stat:nth-child(2){border-right:0}
+  .stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .princ,.stackgrid{grid-template-columns:repeat(2,1fr)}
+  .proj,.proj.wide{grid-column:span 3}
+  .nav ul{display:none}
+}
+@media (max-width:640px){
+  .hero{padding:56px 0 44px}
+  .princ,.edu,.stackgrid{grid-template-columns:1fr}
+  .proj,.proj.wide{grid-column:span 6}
+  .tl{padding-left:24px}.role::before{left:-21px}.tl::before{left:5px}
+  .role,.feature .card{padding:22px}
+  .contact{padding:44px 22px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<div class="backdrop" aria-hidden="true"></div>
+
+<nav class="nav">
+  <div class="wrap">
+    <a href="#top" class="logo"><span class="mark">pj</span>Prasanna Jain</a>
+    <ul>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#stack">Stack</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="mailto:prassu017@gmail.com" class="btn">Get in touch <span class="arrow">→</span></a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <span class="pill"><span class="dot"></span>Founding engineer · Seattle, WA</span>
+      <h1>I build AI systems that are <em>safe to trust</em> with real work.</h1>
+      <p class="lede">Founding engineer shipping <strong>AI agents, data pipelines and backend services</strong> to production for wealth management firms. Previously machine learning in big tech and software engineering at a global asset manager. I work from customer discovery all the way to the deploy.</p>
+      <div class="cta">
+        <a href="#work" class="btn btn-dark">See the work <span class="arrow">→</span></a>
+        <a href="https://github.com/prassu017" target="_blank" rel="noopener" class="btn">GitHub</a>
+        <a href="https://www.linkedin.com/in/prasanna-jain-164656222/" target="_blank" rel="noopener" class="btn">LinkedIn</a>
+      </div>
+    </div>
+    <div class="portrait reveal">
+      <div class="frame"><img src="assets/headshot.webp" alt="Portrait of Prasanna Jain" /></div>
+      <div class="float f1"><span class="ic">9k</span><div><b>9,000+</b><span class="s">agent runs in production</span></div></div>
+      <div class="float f2"><span class="ic">✓</span><div><b>0 false passes</b><span class="s">independently verified</span></div></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap termrow reveal">
+  <div class="term" aria-label="Terminal summary">
+    <div class="term-bar"><i></i><i></i><i></i><span>~/prasanna · zsh</span></div>
+    <div class="term-body" id="term"></div>
+  </div>
+</div>
+
+<div class="wrap reveal">
+  <div class="stats">
+    <div class="stat"><div class="n" data-count="9000" data-suffix="+">9,000+</div><div class="l">agent executions in production</div></div>
+    <div class="stat"><div class="n" data-count="50" data-suffix="+">50+</div><div class="l">external systems integrated</div></div>
+    <div class="stat"><div class="n" data-count="30" data-suffix="%">30%</div><div class="l">forecast accuracy lift on 4.2M rows</div></div>
+    <div class="stat"><div class="n" data-prefix="$" data-count="250" data-suffix="K+">$250K+</div><div class="l">operational impact shipped</div></div>
+  </div>
+</div>
+
+<section id="work">
+  <div class="wrap">
+    <div class="eyebrow reveal">Featured work</div>
+    <h2 class="reveal">An execution engine for wealth advisors</h2>
+    <p class="sub reveal">Getting an agent to act is the easy part. The hard part is deciding whether an action is allowed to become real. This is the system I built to answer that, running in production.</p>
+
+    <div class="card arch reveal" aria-label="System architecture diagram">
+      <svg viewBox="0 0 1040 360" role="img" aria-labelledby="archTitle">
+        <title id="archTitle">Data flows from client systems through pipelines to scoped agent steps, then an independent verification probe, ending in either a delivered result or a withheld one, with every run recorded.</title>
+        <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--dim)"/></marker></defs>
+        <style>
+          .bx{fill:var(--card2);stroke:var(--line2);stroke-width:1.2}
+          .bxa{fill:var(--accent-soft);stroke:color-mix(in srgb,var(--accent) 45%,transparent);stroke-width:1.2}
+          .bxg{fill:var(--good-soft);stroke:color-mix(in srgb,var(--good) 45%,transparent);stroke-width:1.2}
+          .bxr{fill:var(--bad-soft);stroke:color-mix(in srgb,var(--bad) 40%,transparent);stroke-width:1.2}
+          .bxw{fill:var(--warn-soft);stroke:color-mix(in srgb,var(--warn) 40%,transparent);stroke-width:1.2}
+          .h{font:600 14px Inter,system-ui,sans-serif;fill:var(--text)}
+          .s{font:400 11.5px 'JetBrains Mono',monospace;fill:var(--muted)}
+          .lbl{font:500 11px 'JetBrains Mono',monospace;fill:var(--dim);letter-spacing:.06em}
+          .ln{stroke:var(--dim);stroke-width:1.4;fill:none}
+        </style>
+        <text x="20" y="26" class="lbl">CLIENT SYSTEMS</text>
+        <rect class="bx" x="20" y="40" width="170" height="44" rx="10"/><text x="36" y="67" class="h">CRM</text>
+        <rect class="bx" x="20" y="96" width="170" height="44" rx="10"/><text x="36" y="123" class="h">Custodial feeds</text>
+        <rect class="bx" x="20" y="152" width="170" height="44" rx="10"/><text x="36" y="179" class="h">Documents</text>
+        <rect class="bx" x="20" y="208" width="170" height="44" rx="10"/><text x="36" y="235" class="h">Email &amp; calendar</text>
+        <text x="20" y="282" class="s">50+ integrations</text>
+        <path class="ln flowline" d="M190 62 C 230 62, 230 146, 262 146"/>
+        <path class="ln flowline" d="M190 118 C 225 118, 230 146, 262 146"/>
+        <path class="ln flowline" d="M190 174 C 225 174, 230 146, 262 146"/>
+        <path class="ln flowline" d="M190 230 C 230 230, 230 146, 262 146" marker-end="url(#ah)"/>
+        <text x="266" y="26" class="lbl">PIPELINES</text>
+        <rect class="bx" x="266" y="106" width="160" height="80" rx="12"/>
+        <text x="282" y="138" class="h">Ingest &amp; normalize</text><text x="282" y="160" class="s">Temporal · Postgres</text>
+        <path class="ln flowline" d="M426 146 L 470 146" marker-end="url(#ah)"/>
+        <text x="474" y="26" class="lbl">AGENT STEPS</text>
+        <rect class="bxa" x="474" y="106" width="170" height="80" rx="12"/>
+        <text x="490" y="138" class="h">Scoped tool calls</text><text x="490" y="160" class="s">least privilege / step</text>
+        <path class="ln flowline" d="M644 146 L 688 146" marker-end="url(#ah)"/>
+        <text x="692" y="26" class="lbl">VERIFY</text>
+        <rect class="bxw" x="692" y="106" width="160" height="80" rx="12"/>
+        <text x="708" y="138" class="h">Independent probe</text><text x="708" y="160" class="s">source of record</text>
+        <path class="ln flowline" d="M852 130 C 880 130, 880 80, 904 80" marker-end="url(#ah)"/>
+        <path class="ln flowline" d="M852 162 C 880 162, 880 212, 904 212" marker-end="url(#ah)"/>
+        <text x="908" y="26" class="lbl">OUTCOME</text>
+        <rect class="bxg" x="908" y="52" width="116" height="56" rx="12"/>
+        <text x="924" y="78" class="h">Deliver</text><text x="924" y="96" class="s">approved write</text>
+        <rect class="bxr" x="908" y="184" width="116" height="56" rx="12"/>
+        <text x="924" y="210" class="h">Withhold</text><text x="924" y="228" class="s">check failed</text>
+        <rect class="bx" x="266" y="296" width="758" height="44" rx="10" stroke-dasharray="4 4"/>
+        <text x="282" y="323" class="h">Replayable run record</text>
+        <text x="468" y="323" class="s">every step, input and verdict is kept, so any run can be replayed and audited</text>
+      </svg>
+      <div class="caption">
+        <span><i style="background:var(--accent-soft);border:1px solid var(--accent)"></i>agent acts</span>
+        <span><i style="background:var(--warn-soft);border:1px solid var(--warn)"></i>independent check</span>
+        <span><i style="background:var(--good-soft);border:1px solid var(--good)"></i>allowed to become real</span>
+        <span><i style="background:var(--bad-soft);border:1px solid var(--bad)"></i>held back, never shipped wrong</span>
+      </div>
+    </div>
+
+    <div class="feature">
+      <div class="card reveal">
+        <h3>The trust boundary</h3>
+        <p>Agents pull custodian balances, update CRMs, and assemble and file client review packets. Before anything reaches a client:</p>
+        <ul class="checks">
+          <li>Every step is limited to a scoped set of tools</li>
+          <li>Writes wait for human approval</li>
+          <li>A separate probe re-derives each value from the source of record</li>
+          <li>If a check can't pass, the result is withheld, not shipped wrong</li>
+          <li>Rolled out behind layered gates: per-workflow flag, org allowlist, kill switch</li>
+        </ul>
+      </div>
+      <div class="card reveal">
+        <h3>What a verified run looks like</h3>
+        <p>The agent and the probe work separately. The run only passes when they agree.</p>
+        <div class="runlog">
+          <div><span class="t">step 1</span> <span class="hi">fetch_balances</span> · scope: read</div>
+          <div><span class="t">step 2</span> <span class="hi">compute_portfolio_value</span></div>
+          <div><span class="t">agent </span> 944,536.90</div>
+          <div><span class="t">probe </span> 944536.90 <span class="t">(source of record)</span></div>
+          <div><span class="t">verify</span> <span class="ok">MATCH</span> · 3/3 fields</div>
+          <div><span class="t">result</span> <span class="ok">delivered</span> · run recorded</div>
+          <div style="margin-top:8px"><span class="t">across runs</span> 20 fields <span class="no">withheld</span> · 0 false passes</div>
+        </div>
+        <div class="chips" style="margin-top:16px"><span class="chip">AWS ECS</span><span class="chip">Temporal</span><span class="chip">Postgres</span><span class="chip">Qdrant</span><span class="chip">LangChain</span><span class="chip">LangSmith</span><span class="chip">Sentry</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="eyebrow reveal">Experience</div>
+    <h2 class="reveal">Where I've shipped</h2>
+    <p class="sub reveal">Three-plus years across AI, data and backend engineering, from a global asset manager to a founding role.</p>
+
+    <div class="tl">
+      <article class="card role current reveal">
+        <div class="top"><h3>Founding Engineer <span>· Nexhelm AI</span></h3><span class="when now">Apr 2026 - Present</span></div>
+        <p class="ctx">AI execution engine for Registered Investment Advisors · incubator-backed startup</p>
+        <ul>
+          <li>Took the verified-execution engine to production behind layered gates. A separate probe re-derives each value from the source of record, and a run only passes when they match: <strong>zero false passes</strong> across the first production runs.</li>
+          <li>Shipped <strong>20+ customer-reported fixes</strong> in my first month on a live pilot, each verified on real client runs of a meeting-prep automation.</li>
+          <li>Built integrations for Outlook (verified mailbox identity over OAuth), document storage, CRM relationship data and custodial balance feeds, across <strong>50+ external systems</strong>.</li>
+          <li>Traced missing portfolio values to an advisor code never registered with the data provider, restoring the feed for <strong>376 accounts</strong>.</li>
+          <li>Reconciled a large staging-to-main divergence into a five-PR release train, got CI running across it, and cut it over to production.</li>
+          <li>Work directly with clients on discovery, scoping and onboarding.</li>
+        </ul>
+        <div class="chips"><span class="chip">Python</span><span class="chip">TypeScript</span><span class="chip">FastAPI</span><span class="chip">AWS ECS</span><span class="chip">Temporal</span><span class="chip">Supabase</span><span class="chip">Qdrant</span><span class="chip">LangSmith</span><span class="chip">GitHub Actions</span></div>
+      </article>
+
+      <article class="card role reveal">
+        <div class="top"><h3>Machine Learning Engineer Intern <span>· Microsoft</span></h3><span class="when">Mar 2026 - Jun 2026</span></div>
+        <ul>
+          <li>Built an ecosystem-level <strong>Customer Lifetime Value</strong> framework across four consumer product lines.</li>
+          <li>Trained XGBoost on <strong>4.2M observations</strong> in Python and SQL; modeling cross-product interaction effects lifted forecasting accuracy by <strong>30%</strong>.</li>
+          <li>Quantified value across 12 product combinations and turned it into recommendations for senior leadership.</li>
+        </ul>
+        <div class="chips"><span class="chip">Python</span><span class="chip">SQL</span><span class="chip">XGBoost</span></div>
+      </article>
+
+      <article class="card role reveal">
+        <div class="top"><h3>Software Engineer <span>· Alliance Bernstein</span></h3><span class="when">Jun 2023 - Jun 2025</span></div>
+        <ul>
+          <li>Built backend services and integration-heavy REST APIs in Python and TypeScript, with validation and structured error handling that made pipelines self-healing.</li>
+          <li>Designed LLM-powered document parsing and RAG pipelines that turned unstructured documents into structured data.</li>
+          <li>Ran CI/CD and cloud infrastructure on AWS and Azure, and turned prototypes into production systems worth <strong>$250K+</strong> in operational impact.</li>
+        </ul>
+        <div class="chips"><span class="chip">Python</span><span class="chip">TypeScript</span><span class="chip">REST</span><span class="chip">RAG</span><span class="chip">AWS</span><span class="chip">Azure</span></div>
+      </article>
+
+      <article class="card role reveal">
+        <div class="top"><h3>Technical Solutions Consultant <span>· Hewlett Packard Enterprise</span></h3><span class="when">Jan 2023 - Jun 2023</span></div>
+        <ul>
+          <li>Worked with enterprise customers to translate their needs into solution architectures, curating a portfolio of <strong>136 tailored products</strong> with clear trade-offs.</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="eyebrow reveal">Projects</div>
+    <h2 class="reveal">Things I've built</h2>
+    <p class="sub reveal">Side projects, hackathons and take-homes. Most are live, and the code is on GitHub.</p>
+
+    <div class="bento">
+      <article class="card proj wide reveal">
+        <div class="shot framed"><div class="browser"><i></i><i></i><i></i><span>verdict-gate.vercel.app</span></div><img src="assets/verdict-gate.webp" alt="Verdict Gate console showing a request passing four gates to ADMIT" /></div>
+        <div class="body">
+          <h3>Verdict Gate <span class="badge">live</span></h3>
+          <p>A deterministic service that decides whether an agent's chosen action may proceed: ADMIT, HALT, DEFER or REFER. Idempotent retries, a fail-closed ledger and property-based tests. No LLM, no clock reads.</p>
+          <div class="chips"><span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">Redis</span><span class="chip">Hypothesis</span></div>
+          <div class="links"><a href="https://verdict-gate.vercel.app" target="_blank" rel="noopener">Live console ↗</a><a href="https://github.com/prassu017/verdict-gate" target="_blank" rel="noopener">Code ↗</a></div>
+        </div>
+      </article>
+
+      <article class="card proj wide reveal">
+        <div class="shot framed"><div class="browser"><i></i><i></i><i></i><span>zestimate-agent.vercel.app</span></div><img src="assets/zestimate.webp" alt="Zestimate Agent demo page with address lookup and pipeline stages" /></div>
+        <div class="body">
+          <h3>Zestimate Agent <span class="badge">live</span></h3>
+          <p>A production-grade async Python agent that returns a property's current Zestimate as a typed result that never throws. Four-tier parser fallback, a circuit breaker, cross-validation against a second source and multiplicative confidence scoring. 269 tests.</p>
+          <div class="chips"><span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">httpx</span><span class="chip">Pydantic</span><span class="chip">Docker</span></div>
+          <div class="links"><a href="https://zestimate-agent.vercel.app" target="_blank" rel="noopener">Live demo ↗</a><a href="https://github.com/prassu017/zestimate-agent" target="_blank" rel="noopener">Code ↗</a></div>
+        </div>
+      </article>
+
+      <article class="card proj reveal">
+        <div class="codeprev"><span class="k">inbox</span> → classify → pipeline<br><br>
+"Thanks for applying..." <span class="r">rejected</span><br>
+"Can we schedule a call..." <span class="g">interview</span><br>
+"Next steps on your..." <span class="w">screening</span><br><br>
+<span style="color:var(--dim)">status_history</span> +3 rows, audited</div>
+        <div class="body">
+          <h3>JobPilot</h3>
+          <p>Hackathon build. An agent watches the inbox, classifies recruiter replies with an LLM and keeps a Kanban pipeline in sync, with an auditable status history.</p>
+          <div class="chips"><span class="chip">Next.js</span><span class="chip">TypeScript</span><span class="chip">Claude API</span></div>
+          <div class="links"><a href="https://github.com/prassu017/jobpilot" target="_blank" rel="noopener">Code ↗</a></div>
+        </div>
+      </article>
+
+      <article class="card proj reveal">
+        <div class="shot"><img src="assets/ccc-landing.webp" alt="Creator Content Coach landing page" /></div>
+        <div class="body">
+          <h3>Creator Content Coach <span class="badge">live</span></h3>
+          <p>Scores short-form video scripts and hooks, generates rewrites and hashtags, with a deterministic demo mode and a live LLM mode.</p>
+          <div class="chips"><span class="chip">Next.js</span><span class="chip">OpenAI</span><span class="chip">Supabase</span></div>
+          <div class="links"><a href="https://creator-content-coach.vercel.app" target="_blank" rel="noopener">Live ↗</a><a href="https://github.com/prassu017/creator-content-coach" target="_blank" rel="noopener">Code ↗</a></div>
+        </div>
+      </article>
+
+      <article class="card proj reveal">
+        <div class="shot"><img src="assets/esg-1.webp" alt="ESG Pulse sentiment and stock impact dashboard" /></div>
+        <div class="body">
+          <h3>ESG Pulse</h3>
+          <p>Tracks ESG news for a portfolio, scores sentiment with FinBERT, and measures its effect on short-term returns with regression.</p>
+          <div class="chips"><span class="chip">Python</span><span class="chip">FinBERT</span><span class="chip">Streamlit</span></div>
+          <div class="links"><a href="https://github.com/prassu017/esg-sentiment-agent" target="_blank" rel="noopener">Code ↗</a></div>
+        </div>
+      </article>
+
+      <article class="card proj wide reveal" style="grid-column:span 6">
+        <div class="shot" style="aspect-ratio:21/8"><img src="assets/salary-dashboard-1.webp" alt="Data jobs salary analysis dashboard" /></div>
+        <div class="body">
+          <h3>Data Jobs Salary Analysis</h3>
+          <p>An interactive dashboard of real, self-reported salary data for data roles, broken down by experience level, region and work type.</p>
+          <div class="chips"><span class="chip">Python</span><span class="chip">Streamlit</span><span class="chip">Data Visualization</span></div>
+          <div class="links"><a href="https://github.com/prassu017/salary-dashboard" target="_blank" rel="noopener">Code ↗</a></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="principles" style="padding-top:24px">
+  <div class="wrap">
+    <div class="eyebrow reveal">How I build</div>
+    <h2 class="reveal">Principles I actually use</h2>
+    <p class="sub reveal">Habits that came from real incidents, not a style guide.</p>
+    <div class="princ">
+      <div class="card pcard reveal"><div class="num">01</div>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+        <h3>Fail closed</h3><p>If the system can't prove a result is right, it holds it back. A confident wrong answer is worse than no answer.</p></div>
+      <div class="card pcard reveal"><div class="num">02</div>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19h16"/><path d="M7 16V9"/><path d="M12 16V5"/><path d="M17 16v-4"/></svg>
+        <h3>Measure the measurer</h3><p>I once saw a model that had stopped responding score as a slightly weak one. Evaluation needs its own failure modes tested.</p></div>
+      <div class="card pcard reveal"><div class="num">03</div>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/><path d="M12 8v4l3 2"/></svg>
+        <h3>Replay everything</h3><p>Every run leaves a record of what ran and why, so problems get debugged from evidence, not memory.</p></div>
+      <div class="card pcard reveal"><div class="num">04</div>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="5" cy="12" r="2"/><circle cx="19" cy="12" r="2"/><path d="M7 12h10"/><path d="M12 7v10"/></svg>
+        <h3>Own the whole path</h3><p>From the customer conversation to the deploy and the fix when something breaks. The job isn't done when the PR merges.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="stack" style="padding-top:24px">
+  <div class="wrap">
+    <div class="eyebrow reveal">Stack</div>
+    <h2 class="reveal">Tools I reach for</h2>
+    <div class="stackgrid" style="margin-top:34px">
+      <div class="card reveal"><h3>Languages</h3><div class="chips"><span class="chip">Python</span><span class="chip">TypeScript</span><span class="chip">JavaScript</span><span class="chip">SQL</span></div></div>
+      <div class="card reveal"><h3>AI &amp; ML</h3><div class="chips"><span class="chip">LangChain</span><span class="chip">LangGraph</span><span class="chip">LangSmith</span><span class="chip">RAG</span><span class="chip">PyTorch</span><span class="chip">XGBoost</span></div></div>
+      <div class="card reveal"><h3>Backend &amp; data</h3><div class="chips"><span class="chip">FastAPI</span><span class="chip">Flask</span><span class="chip">PostgreSQL</span><span class="chip">Supabase</span><span class="chip">Redis</span><span class="chip">Qdrant</span><span class="chip">Temporal</span></div></div>
+      <div class="card reveal"><h3>Cloud &amp; tooling</h3><div class="chips"><span class="chip">AWS ECS</span><span class="chip">Azure</span><span class="chip">Docker</span><span class="chip">GitHub Actions</span><span class="chip">Sentry</span><span class="chip">Vercel</span><span class="chip">Claude Code</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="education" style="padding-top:24px">
+  <div class="wrap">
+    <div class="eyebrow reveal">Education &amp; recognition</div>
+    <h2 class="reveal">Background</h2>
+    <div class="edu" style="margin-top:34px">
+      <div class="card ecard reveal"><div class="when">2025 - 2026</div><h3>MS Business Analytics</h3><p>University of Washington, Foster School of Business</p></div>
+      <div class="card ecard reveal"><div class="when">2019 - 2023</div><h3>B.Tech Computer Science</h3><p>Symbiosis Institute of Technology, Pune</p></div>
+      <div class="card ecard reveal"><div class="when">2026</div><h3>3rd Place, UW Foster Datathon</h3><p>Plus Top 10 in North America at a sustainable supply chain hackathon.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="card contact reveal">
+      <div class="eyebrow">Contact</div>
+      <h2>Let's build something that ships.</h2>
+      <p class="sub">Open to AI engineering, forward deployed and backend roles. The fastest way to reach me is email.</p>
+      <div class="cta">
+        <a href="mailto:prassu017@gmail.com" class="btn btn-dark">prassu017@gmail.com <span class="arrow">→</span></a>
+        <a href="https://github.com/prassu017" target="_blank" rel="noopener" class="btn">GitHub</a>
+        <a href="https://www.linkedin.com/in/prasanna-jain-164656222/" target="_blank" rel="noopener" class="btn">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="yr">2026</span> Prasanna Jain</span>
+    <span>built by hand · hosted on GitHub Pages</span>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  }), { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  const fmt = n => n.toLocaleString('en-US');
+  const counters = new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting) return;
+    const el = e.target, end = +el.dataset.count, pre = el.dataset.prefix || '', suf = el.dataset.suffix || '';
+    counters.unobserve(el);
+    if (reduce) return;
+    const t0 = performance.now(), dur = 1400;
+    const tick = t => {
+      const p = Math.min(1, (t - t0) / dur), v = Math.round(end * (1 - Math.pow(1 - p, 3)));
+      el.textContent = pre + fmt(v) + suf;
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }), { threshold: 0.5 });
+  document.querySelectorAll('[data-count]').forEach(el => counters.observe(el));
+
+  // typed terminal
+  const lines = [
+    ['p', '$ whoami'],
+    ['', 'prasanna jain · founding engineer'],
+    ['p', '$ cat now.txt'],
+    ['', 'building an ai execution engine for wealth advisors'],
+    ['p', '$ cat stack.txt'],
+    ['k', 'python · typescript · postgres · aws · temporal · langgraph'],
+    ['p', '$ run agents --env prod --status'],
+    ['ok', '✓ 9,000+ executions · writes gated · results verified'],
+    ['p', '$ echo $PREVIOUSLY'],
+    ['v', 'ml in big tech · swe at a global asset manager · enterprise consulting'],
+  ];
+  const term = document.getElementById('term');
+  const render = (count, partial) => {
+    term.innerHTML = lines.slice(0, count).map(([c, s]) => `<div class="${c}">${s}</div>`).join('')
+      + (partial != null ? `<div class="${lines[count][0]}">${partial}<span class="caret"></span></div>` : `<div class="p">$ <span class="caret"></span></div>`);
+  };
+  if (reduce) { render(lines.length); }
+  else {
+    let i = 0, j = 0, started = false;
+    const step = () => {
+      if (i >= lines.length) { render(lines.length); return; }
+      const [c, s] = lines[i];
+      if (c !== 'p') { i++; render(i); setTimeout(step, 220); return; }
+      if (j <= s.length) { render(i, s.slice(0, j)); j++; setTimeout(step, 34); }
+      else { i++; j = 0; render(i); setTimeout(step, 260); }
+    };
+    render(0, '');
+    const tio = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting && !started) { started = true; tio.disconnect(); setTimeout(step, 300); }
+    }), { threshold: 0.3 });
+    tio.observe(term);
+  }
+  document.getElementById('yr').textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
