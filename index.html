@@ -112,10 +112,10 @@ h1 em{font-style:normal;color:var(--accent)}
 .c1{top:10px;left:10px;border-width:1px 0 0 1px}.c2{top:10px;right:10px;border-width:1px 1px 0 0}
 .c3{bottom:10px;left:10px;border-width:0 0 1px 1px}.c4{bottom:10px;right:10px;border-width:0 1px 1px 0}
 .scan{position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(255,255,255,.018) 0 1px,transparent 1px 3px);mix-blend-mode:overlay}
-.hcard{position:absolute;width:300px;pointer-events:none;opacity:0;transform:translateY(8px) scale(.97);transition:opacity .18s,transform .18s;
+.hcard{position:absolute;width:300px;pointer-events:none;cursor:pointer;opacity:0;transform:translateY(8px) scale(.97);transition:opacity .18s,transform .18s;
   background:rgba(24,23,21,.94);border:1px solid #3a3934;border-radius:14px;overflow:hidden;backdrop-filter:blur(8px);
   box-shadow:0 30px 60px -20px rgba(0,0,0,.8),0 0 0 1px rgba(255,255,255,.03) inset;z-index:3}
-.hcard.show{opacity:1;transform:none}
+.hcard.show{opacity:1;transform:none;pointer-events:auto}
 .hcard .glow{height:3px}
 .hcard img{width:100%;aspect-ratio:16/9;object-fit:cover;object-position:top left;border-bottom:1px solid #2c2b27;display:block}
 .hcard .code{aspect-ratio:16/9;padding:14px 16px;font-family:var(--mono);font-size:11.5px;line-height:1.7;color:#a7a49b;border-bottom:1px solid #2c2b27;background:#161614;overflow:hidden;white-space:pre}
@@ -309,14 +309,14 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   <div class="wrap">
     <div class="eyebrow reveal">Explore</div>
     <h2 class="reveal">My work, in four dimensions</h2>
-    <p class="sub reveal">A tesseract rotating through 4D space, projected onto your screen. Each glowing node is a project or a role, colored by where it sits in the fourth dimension. Hover a node to preview it, click to open it, drag to spin the hypercube.</p>
+    <p class="sub reveal">A tesseract, the four-dimensional cousin of a cube, projected onto your screen. Each glowing node is a project or a role, colored by where it sits in the fourth dimension. Hover a node to preview it, click to open it, and drag to turn it through 4D.</p>
     <div class="hyper reveal" id="hyper">
       <canvas id="hypercanvas" aria-label="Interactive 4D graph of projects and roles. Use the buttons below for a keyboard-friendly list."></canvas>
       <div class="scan"></div>
       <span class="corner c1"></span><span class="corner c2"></span><span class="corner c3"></span><span class="corner c4"></span>
       <div class="hud hud-tl"><b>HYPERGRAPH</b> · tesseract.4d</div>
       <div class="hud hud-tr"><span class="live">●</span> LIVE · <span id="hudfps">60</span> fps</div>
-      <div class="hud hud-bl">drag to rotate · hover to preview · click to open</div>
+      <div class="hud hud-bl">drag to turn through 4D · hover to preview · click to open</div>
       <div class="hud hud-br" id="hudrot">xw 0.00 · yw 0.00 · zw 0.00</div>
       <div class="hcard" id="hcard" role="status" aria-live="polite"></div>
     </div>
@@ -470,7 +470,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   <div class="wrap">
     <div class="eyebrow reveal">Projects</div>
     <h2 class="reveal">Things I've built</h2>
-    <p class="sub reveal">Side projects, hackathons and take-homes. Most are live, and the code is on GitHub.</p>
+    <p class="sub reveal">Four builds I'm proudest of. Three are live, and all the code is on GitHub.</p>
 
     <div class="bento">
       <article class="card proj wide reveal">
@@ -493,22 +493,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
         </div>
       </article>
 
-      <article class="card proj reveal">
-        <div class="codeprev"><span class="k">inbox</span> → classify → pipeline<br><br>
-"Thanks for applying..." <span class="r">rejected</span><br>
-"Can we schedule a call..." <span class="g">interview</span><br>
-"Next steps on your..." <span class="w">screening</span><br><br>
-<span style="color:var(--dim)">status_history</span> +3 rows, audited</div>
-        <div class="body">
-          <h3>JobPilot</h3>
-          <p>Hackathon build. An agent watches the inbox, classifies recruiter replies with an LLM and keeps a Kanban pipeline in sync, with an auditable status history.</p>
-          <div class="chips"><span class="chip">Next.js</span><span class="chip">TypeScript</span><span class="chip">Claude API</span></div>
-          <div class="links"><a href="https://github.com/prassu017/jobpilot" target="_blank" rel="noopener">Code ↗</a></div>
-        </div>
-      </article>
-
-      <article class="card proj reveal">
-        <div class="shot"><img src="assets/ccc-landing.webp" alt="Creator Content Coach landing page" /></div>
+      <article class="card proj wide reveal">
+        <div class="shot framed"><div class="browser"><i></i><i></i><i></i><span>creator-content-coach.vercel.app</span></div><img src="assets/ccc-landing.webp" alt="Creator Content Coach landing page" /></div>
         <div class="body">
           <h3>Creator Content Coach <span class="badge">live</span></h3>
           <p>Scores short-form video scripts and hooks, generates rewrites and hashtags, with a deterministic demo mode and a live LLM mode.</p>
@@ -517,8 +503,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
         </div>
       </article>
 
-      <article class="card proj reveal">
-        <div class="shot"><img src="assets/esg-1.webp" alt="ESG Pulse sentiment and stock impact dashboard" /></div>
+      <article class="card proj wide reveal">
+        <div class="shot framed"><div class="browser"><i></i><i></i><i></i><span>esg-pulse · streamlit</span></div><img src="assets/esg-1.webp" alt="ESG Pulse sentiment and stock impact dashboard" /></div>
         <div class="body">
           <h3>ESG Pulse</h3>
           <p>Tracks ESG news for a portfolio, scores sentiment with FinBERT, and measures its effect on short-term returns with regression.</p>
@@ -527,16 +513,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
         </div>
       </article>
 
-      <article class="card proj wide reveal" style="grid-column:span 6">
-        <div class="shot" style="aspect-ratio:21/8"><img src="assets/salary-dashboard-1.webp" alt="Data jobs salary analysis dashboard" /></div>
-        <div class="body">
-          <h3>Data Jobs Salary Analysis</h3>
-          <p>An interactive dashboard of real, self-reported salary data for data roles, broken down by experience level, region and work type.</p>
-          <div class="chips"><span class="chip">Python</span><span class="chip">Streamlit</span><span class="chip">Data Visualization</span></div>
-          <div class="links"><a href="https://github.com/prassu017/salary-dashboard" target="_blank" rel="noopener">Code ↗</a></div>
-        </div>
-      </article>
-    </div>
+      </div>
   </div>
 </section>
 
@@ -686,8 +663,6 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     {kind:'PROJECT', title:'Creator Content Coach', text:'Scores short-form scripts and hooks, then rewrites them, with a deterministic demo mode and a live LLM mode.', tags:['Next.js','OpenAI','Supabase'], href:'https://creator-content-coach.vercel.app', img:'assets/ccc-landing.webp'},
     {kind:'WORK', title:'Backend & RAG pipelines', text:'Self-healing REST services and LLM document parsing at a global asset manager. $250K+ operational impact.', tags:['Python','TypeScript','RAG'], href:'#experience', code:'services   REST, Python, TS\nparsing    LLM + RAG\nci/cd      AWS, Azure\nimpact     $250K+'},
     {kind:'PROJECT', title:'ESG Pulse', text:'Tracks ESG news for a portfolio and measures sentiment impact on returns with FinBERT and regression.', tags:['Python','FinBERT','Streamlit'], href:'https://github.com/prassu017/esg-sentiment-agent', img:'assets/esg-1.webp'},
-    {kind:'PROJECT', title:'JobPilot', text:'Hackathon agent that classifies recruiter emails and keeps a job pipeline in sync, with an audited history.', tags:['Next.js','TypeScript','Claude API'], href:'https://github.com/prassu017/jobpilot', code:'"Thanks for applying..."  rejected\n"Can we schedule..."      interview\n"Next steps..."           screening'},
-    {kind:'PROJECT', title:'Salary Explorer', text:'Interactive dashboard of real salary data for data roles by experience, region and work type.', tags:['Python','Streamlit','Viz'], href:'https://github.com/prassu017/salary-dashboard', img:'assets/salary-dashboard-1.webp'},
     {kind:'WORK', title:'Enterprise consulting', text:'Translated enterprise customer needs into solution architectures across 136 tailored products.', tags:['Solutions','Architecture'], href:'#experience', code:'portfolio  136 products\nrole       solutions consultant\nfocus      trade-offs, fit'},
   ];
 
@@ -696,7 +671,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   for (let i = 0; i < 16; i++) V.push([i & 1 ? 1 : -1, i & 2 ? 1 : -1, i & 4 ? 1 : -1, i & 8 ? 1 : -1]);
   const E = [];
   for (let i = 0; i < 16; i++) for (let b = 0; b < 4; b++) { const j = i ^ (1 << b); if (i < j) E.push([i, j]); }
-  const SLOT = [0, 15, 5, 10, 3, 12, 6, 9, 1, 14];
+  const SLOT = [0, 15, 5, 10, 3, 12, 6, 9];
   const nodeAt = {}; SLOT.forEach((v, k) => { nodeAt[v] = k; });
 
   let W = 0, H = 0;
@@ -708,9 +683,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   };
   resize(); window.addEventListener('resize', resize);
 
-  const ang = {xy: 0.3, xz: 0.2, yz: 0, xw: 0.5, yw: 0.2, zw: 0};
-  const vel = {xz: 0, yz: 0};
-  const auto = reduce ? 0.15 : 1;
+  const ang = {xy: -0.277, xz: -2.06, yz: 2.672, xw: 1.94, yw: 1.103, zw: 3.141};  // resting pose chosen to spread the nodes
+  const vel = {xz: 0, yz: 0, xw: 0, yw: 0};
+  const auto = 0;  // static; the visitor drags to turn it
   const rot = (p, a, b, t) => { const c = Math.cos(t), s = Math.sin(t), x = p[a], y = p[b]; p[a] = x * c - y * s; p[b] = x * s + y * c; };
   const project = (v) => {
     const p = v.slice();
@@ -722,8 +697,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     const S = Math.min(W, H) * 0.78;
     return {x: W / 2 + x3 * k3 * S, y: H / 2 + y3 * k3 * S, z: z3, w: w, s: k3 * k4};
   };
-  const hue = (w, now) => (200 + w * 110 + now / 60) % 360;
+  const hue = (w, now) => (200 + w * 110 + 360) % 360;
 
+  let stick = -1, stickT = 0, cardHover = false;
   let mouse = {x: -1e4, y: -1e4}, hot = -1, drag = null, last = performance.now(), fpsT = 0, frames = 0;
   const pts = new Array(16);
   const hudFps = document.getElementById('hudfps'), hudRot = document.getElementById('hudrot');
@@ -750,7 +726,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
         `<div class="tags">${it.tags.map(x => `<span>${x}</span>`).join('')}</div><div class="go">click to open ↗</div></div>`;
       card.classList.add('show');
     }
-    if (i >= 0 && P) {
+    if (i >= 0 && P && !cardHover) {
       const cw = card.offsetWidth, ch = card.offsetHeight;
       let x = P.x + 34, y = P.y - ch / 2;
       if (x + cw > W - 12) x = P.x - cw - 34;
@@ -766,8 +742,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     if (fpsT > 0.5) { hudFps.textContent = Math.round(frames / fpsT); frames = 0; fpsT = 0; }
     const slow = hot >= 0 ? 0.15 : 1;
     ang.xw += dt * 0.35 * auto * slow; ang.yw += dt * 0.21 * auto * slow; ang.zw += dt * 0.13 * auto * slow;
-    ang.xy += dt * 0.05 * auto * slow; ang.xz += vel.xz; ang.yz += vel.yz;
-    vel.xz *= 0.94; vel.yz *= 0.94;
+    ang.xy += dt * 0.05 * auto * slow; ang.xz += vel.xz; ang.yz += vel.yz; ang.xw += vel.xw; ang.yw += vel.yw;
+    vel.xz *= 0.92; vel.yz *= 0.92; vel.xw *= 0.92; vel.yw *= 0.92;
     const tau = Math.PI * 2;
     hudRot.textContent = `xw ${(ang.xw % tau).toFixed(2)} · yw ${(ang.yw % tau).toFixed(2)} · zw ${(ang.zw % tau).toFixed(2)}`;
 
@@ -784,7 +760,11 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       ctx.beginPath(); ctx.moveTo(A.x, A.y); ctx.lineTo(B.x, B.y); ctx.stroke();
     }
 
-    hot = drag ? -1 : hitTest(mouse.x, mouse.y);
+    const under = drag ? -1 : hitTest(mouse.x, mouse.y);
+    if (under >= 0) { stick = under; stickT = now; }
+    else if (cardHover) stickT = now;
+    else if (now - stickT > 450) stick = -1;
+    hot = drag ? -1 : stick;
     canvas.classList.toggle('hot', hot >= 0);
 
     const order = [...Array(16).keys()].sort((a, b) => pts[a].z - pts[b].z);
@@ -828,7 +808,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     const p = pos(e);
     if (drag) {
       const dx = p.x - drag.x, dy = p.y - drag.y;
-      vel.xz = dx * 0.0028; vel.yz = -dy * 0.0028; ang.xz += dx * 0.006; ang.yz -= dy * 0.006;
+      vel.xw = dx * 0.002; vel.yw = dy * 0.002; ang.xw += dx * 0.005; ang.yw += dy * 0.005;
       if (Math.abs(dx) + Math.abs(dy) > 3) drag.moved = true;
       drag.x = p.x; drag.y = p.y;
     } else mouse = p;
@@ -844,6 +824,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     if (d && !d.moved) { const pick = hitTest(p.x, p.y); if (pick >= 0) open(ITEMS[pick].href); }
   });
   canvas.addEventListener('pointerleave', () => { if (!drag) mouse = {x: -1e4, y: -1e4}; });
+  card.addEventListener('mouseenter', () => { cardHover = true; });
+  card.addEventListener('mouseleave', () => { cardHover = false; stickT = performance.now(); });
+  card.addEventListener('click', () => { if (shown >= 0) open(ITEMS[shown].href); });
 
   const list = document.getElementById('hlist');
   ITEMS.forEach((it, k) => {
