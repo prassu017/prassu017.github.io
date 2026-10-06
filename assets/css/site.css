@@ -856,6 +856,8 @@ html:not(.js) .tx-list {
 .span-4 { grid-column: span 4; }
 .span-5 { grid-column: span 5; }
 .span-7 { grid-column: span 7; }
+.span-6 { grid-column: span 6; }
+.span-12 { grid-column: span 12; }
 
 .dcard {
   display: flex;
@@ -1346,7 +1348,8 @@ html.theme-switching *::after {
   .grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .span-4 { grid-column: span 6; }
   .span-5, .span-7 { grid-column: span 6; }
-  .bento > .cell:nth-child(5) { grid-column: span 12; }
+  .span-6 { grid-column: span 6; }
+  .bento > .cell:nth-child(7), .span-12 { grid-column: span 12; }
   .rail { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 40px; }
   .rail-line { display: none; }
   .rail-step { padding-top: 0; padding-left: 28px; }
@@ -1392,7 +1395,7 @@ html.theme-switching *::after {
 @media (max-width: 720px) {
   .bento { grid-template-columns: minmax(0, 1fr); }
   .bento > .cell,
-  .bento > .cell:nth-child(5) { grid-column: auto; }
+  .bento > .cell:nth-child(7) { grid-column: auto; }
   .dcard-wide { flex-direction: column; align-items: flex-start; }
   .metric-xl { align-items: flex-start; }
   .pdo > div { grid-template-columns: minmax(0, 1fr); gap: 4px; }
@@ -1442,3 +1445,24 @@ html.theme-switching *::after {
   .marquee { overflow-x: auto; }
   .btn .i, .proj .shot img, [data-tilt], .skip { transition: none; }
 }
+
+/* Field report lesson line */
+.lesson {
+  margin: 18px 0 0;
+  padding: 10px 0 0 14px;
+  border-top: 1px solid var(--line);
+  position: relative;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  line-height: 1.55;
+  letter-spacing: 0.01em;
+  color: var(--muted);
+}
+.lesson::before {
+  content: "";
+  position: absolute; left: 0; top: 14px; bottom: 2px;
+  width: 2px; border-radius: 2px;
+  background: var(--accent);
+  opacity: .7;
+}
+.lesson b { color: var(--fg); font-weight: 500; }
